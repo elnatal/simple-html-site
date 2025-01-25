@@ -1,18 +1,10 @@
 import express from "express";
-import { Comment } from "./models/comment";
 import routes from "./routes";
+import cors from 'cors';
 
 const app = express();
 
-// setup cors
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
+app.use(cors({ origin: 'http://localhost:3000' }));
 
 app.use("/", routes);
 
